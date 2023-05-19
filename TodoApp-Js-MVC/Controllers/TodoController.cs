@@ -1,0 +1,33 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using TodoApp_Js_MVC.Services;
+
+namespace TodoApp_Js_MVC.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class TodoController : ControllerBase
+    {
+        private readonly ITodoService _todoService;
+
+        public TodoController(ITodoService todoService)
+        {
+            _todoService = todoService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _todoService.GetAllItems();
+
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetItemId(int id)
+        {
+            var result = await _todoService.GetItemId(id);
+
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
+    }
+}

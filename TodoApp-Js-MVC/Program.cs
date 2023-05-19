@@ -1,5 +1,6 @@
 using TodoApp_Js_MVC.Data;
 using Microsoft.EntityFrameworkCore;
+using TodoApp_Js_MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<ITodoService, TodoService>();
+
+
 //Register Database
 
 builder.Services.AddDbContext<TodoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionStrings")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
