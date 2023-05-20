@@ -6,6 +6,6 @@ namespace TodoApp_Js_MVC.Services
     public interface ITodoService
     {
         Task<List<TodoItem>> GetAllItems();
-        Task<List<TodoItem>> GetItemId(int id);
+        Task<TodoItem> GetItemId(int id);
     }
 }

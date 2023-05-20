@@ -27,11 +27,11 @@ namespace TodoApp_Js_MVC.Services
             }
         }
 
-        public async Task<List<TodoItem>> GetItemId(int id)
+        public async Task<TodoItem> GetItemId(int id)
         {
             try
             {
-                return await _dbContext.TodoItems.Where(t => t.TodoID == id).ToListAsync();
+                return await _dbContext.TodoItems.FindAsync(id);
             }
             catch (Exception ex)
             {

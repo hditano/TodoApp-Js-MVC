@@ -19,10 +19,15 @@ namespace TodoApp_Js_MVC.Controllers
         {
             var result = await _todoService.GetAllItems();
 
+            if(result == null)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, "No authors in database");
+            }
+
             return StatusCode(StatusCodes.Status200OK, result);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetItemId(int id)
         {
             var result = await _todoService.GetItemId(id);

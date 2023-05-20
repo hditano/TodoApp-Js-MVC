@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register TodoService for Dependency Injection
 builder.Services.AddTransient<ITodoService, TodoService>();
 
 
