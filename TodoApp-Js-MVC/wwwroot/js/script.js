@@ -3,9 +3,14 @@ let todos = [];
 
 function GetItems() {
     console.log('Hello World')
+
+    let myEle = document.getElementById('items');
+    let myDiv = document.createElement('h2');
+    let result = myEle.appendChild(myDiv);
+
     fetch(uri)
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => result.textContent = JSON.stringify(data));
 
 }
 
