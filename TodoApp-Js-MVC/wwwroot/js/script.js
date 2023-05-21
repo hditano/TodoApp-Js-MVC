@@ -20,7 +20,6 @@ function GetItems() {
 function DeleteItem() {
     console.Log('Delete item');
 
-
     fetch(uri)
         .then(response => response.json())
 }

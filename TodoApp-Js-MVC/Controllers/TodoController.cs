@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TodoApp_Js_MVC.Models;
 using TodoApp_Js_MVC.Services;
 
 namespace TodoApp_Js_MVC.Controllers
@@ -39,6 +40,14 @@ namespace TodoApp_Js_MVC.Controllers
         public async Task<IActionResult> DeleteItem(int id)
         {
             var result = await _todoService.DeleteItem(id);
+
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddItem(TodoItem item)
+        {
+            var result = await _todoService.AddItem(item);
 
             return StatusCode(StatusCodes.Status200OK, result);
         }

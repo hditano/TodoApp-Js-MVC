@@ -14,9 +14,12 @@ namespace TodoApp_Js_MVC.Services
             _dbContext = dbcontext;
         }
 
-        public Task<TodoItem> AddItem(TodoItem item)
+        public async Task<TodoItem> AddItem(TodoItem item)
         {
-            throw new NotImplementedException();
+            await _dbContext.TodoItems.AddAsync(item);
+            await _dbContext.SaveChangesAsync();
+
+            return item;
         }
 
         public async Task<TodoItem> DeleteItem(int id)
