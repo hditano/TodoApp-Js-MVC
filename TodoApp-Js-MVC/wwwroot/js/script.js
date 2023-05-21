@@ -2,7 +2,7 @@
 let todos = [];
 
 function GetItems() {
-    console.log('Hello World')
+    console.log('Hello')
 
     let myEle = document.getElementById('items');
     let myDiv = document.createElement('h2');
@@ -10,7 +10,18 @@ function GetItems() {
 
     fetch(uri)
         .then(response => response.json())
-        .then(data => result.textContent = JSON.stringify(data));
+        .then(data => {
+            for (let i in data) {
+                console.log(data[i].title)
+            }
+        })
+}
 
+function DeleteItem() {
+    console.Log('Delete item');
+
+
+    fetch(uri)
+        .then(response => response.json())
 }
 

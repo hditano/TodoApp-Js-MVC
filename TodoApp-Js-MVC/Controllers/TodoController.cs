@@ -34,5 +34,13 @@ namespace TodoApp_Js_MVC.Controllers
 
             return StatusCode(StatusCodes.Status200OK, result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            var result = await _todoService.DeleteItem(id);
+
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
     }
 }

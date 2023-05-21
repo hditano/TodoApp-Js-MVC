@@ -14,6 +14,26 @@ namespace TodoApp_Js_MVC.Services
             _dbContext = dbcontext;
         }
 
+        public Task<TodoItem> AddItem(TodoItem item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<TodoItem> DeleteItem(int id)
+        {
+            try
+            {
+                var result = await _dbContext.TodoItems.FindAsync(id);
+                _dbContext.TodoItems.Remove(result);
+                _dbContext.SaveChanges();
+                return result;
+
+            }
+            catch (Exception ex) 
+            {
+                return null;
+            }
+        }
 
         public async Task<List<TodoItem>> GetAllItems()
         {
@@ -37,6 +57,11 @@ namespace TodoApp_Js_MVC.Services
             {
                 return null;
             }
+        }
+
+        public Task<TodoItem> ModifyItem(int id, TodoItem item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

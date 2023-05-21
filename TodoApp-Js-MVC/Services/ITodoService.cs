@@ -7,5 +7,8 @@ namespace TodoApp_Js_MVC.Services
     {
         Task<List<TodoItem>> GetAllItems();
         Task<TodoItem> GetItemId(int id);
+        Task<TodoItem> ModifyItem(int id, TodoItem item);
+        Task<TodoItem> DeleteItem(int id);
+        Task<TodoItem> AddItem (TodoItem item);
     }
 }
