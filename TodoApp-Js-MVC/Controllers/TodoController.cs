@@ -51,5 +51,13 @@ namespace TodoApp_Js_MVC.Controllers
 
             return StatusCode(StatusCodes.Status200OK, result);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateItem(TodoItem item)
+        {
+            var result = await _todoService.ModifyItem(item);
+
+            return StatusCode(StatusCodes.Status200OK, result);
+        }
     }
 }

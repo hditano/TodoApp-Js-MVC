@@ -62,9 +62,19 @@ namespace TodoApp_Js_MVC.Services
             }
         }
 
-        public Task<TodoItem> ModifyItem(int id, TodoItem item)
+        public async Task<TodoItem> ModifyItem(TodoItem item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dbContext.Entry(item).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+                return item;
+                
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

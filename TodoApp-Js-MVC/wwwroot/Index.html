@@ -3,17 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="css/site.css"/>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-    <h2 class="world">Hello Sasa</h2>
-        <button type="submit" onclick="GetItems()">GetAllItems</button>
-    <p id="items"></p>
+    <h2 class="world">Movie Database</h2>
+    <button type="submit" onclick="GetItems()">GetAllItems</button>
+    <div id="items" class="container">
+        <div class="row">
+            <div class="col-sm Id"><h5>Id</h5></div>
+            <div class="col-sm Title"><h5>Title</h5></div>
+            <div class="col-sm Description"><h5>Description</h5></div>
+            <div class="col-sm IsCompleted"><h5>IsCompleted</h5></div>
+        </div>
+    </div>
     <script src="js/script.js"></script>
     <div>
         <h2>Delete Item</h2>
         <input type="text" id="delete-items" />
         <button type="submit" onclick="DeleteItem()">DeleteItem</button>
     </div>
+    <div>
+        <h2>Add Item</h2>
+        <label for="add-title">Title: </label>
+        <input type="text" id="add-title" />
+        <label for="add-description">Description: </label>
+        <input type="text" id="add-description" />
+        <label for="IsCompleted">IsCompleted: </label>
+        <input type="text" id="IsCompleted" />
+        <button type="submit" onclick="AddItem()">Add Item</button>
+    </div>
+    <div>
+        <h2>Modify Item</h2>
+        <label for="modify-title">Title: </label>
+        <input type="text" id="modify-title" />
+        <label for="modify-description">Description: </label>
+        <input type="text" id="modify-description" />
+        <label for="Modify-IsCompleted">IsCompleted: </label>
+        <input pattern="text" id="Modify-IsCompleted" />
+        <button type="submit" onclick="ModifyItem()">Modify Item</button>
+    </div>
+
 </body>
 </html>
