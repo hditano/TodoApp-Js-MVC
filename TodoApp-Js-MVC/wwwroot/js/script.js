@@ -3,7 +3,7 @@ let todos = [];
 
 function GetItems() {
 
-    
+
 
     fetch(uri)
         .then(response => response.json())
@@ -26,14 +26,16 @@ function GetItems() {
             })
 
 
-            })
+        })
 
-        }
+}
 
 function DeleteItem() {
-    console.Log('Delete item');
 
-    fetch(uri)
+    let delItem = document.getElementById('delete-items').value;
+
+    console.log(`${uri}/${delItem}`)
+    fetch(`${uri}/${delItem}`, { method: 'DELETE' })
         .then(response => response.json())
 }
 
