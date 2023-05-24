@@ -5,44 +5,57 @@
     <title></title>
     <link rel="stylesheet" href="css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
-    <h2 class="world">Movie Database</h2>
-    <button type="submit" onclick="GetItems()">GetAllItems</button>
-    <div id="items" class="container">
-        <div class="row">
-            <div class="col-sm Id"><h5>Id</h5></div>
-            <div class="col-sm Title"><h5>Title</h5></div>
-            <div class="col-sm Description"><h5>Description</h5></div>
-            <div class="col-sm IsCompleted"><h5>IsCompleted</h5></div>
+    <div class="container">
+        <h2 class="text-center world bs-blue">Movie Database</h2>
+    </div>
+    <div id="items" class="container mt-4">
+        <div class="border border-white row">
+            <div class="col-sm"><h5>Id</h5><div class="Id"></div></div>
+            <div class="col-sm"><h5>Title</h5><div class="Title"></div></div>
+            <div class="col-sm"><h5>Description</h5><div class="Description"></div></div>
+            <div class="col-sm"><h5>IsCompleted</h5><div class="IsCompleted"></div></div>
+            <div class="col-sm">
+                <h5 class="text-left">Modify</h5>
+                <div class="Icons"></div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" onclick="GetItems()">GetAllItems</button>
+    </div>
+
+    <div class="card container mt-4 p-3 deleteContainer" >
+        <h4>Delete Item</h4>
+        <div class="card-body">
+            <input type="text" id="delete-items" />
+            <button class="btn btn-primary" type="submit" onclick="DeleteItem()">DeleteItem</button>
         </div>
     </div>
-    <script src="js/script.js"></script>
-    <div>
-        <h2>Delete Item</h2>
-        <input type="text" id="delete-items" />
-        <button type="submit" onclick="DeleteItem()">DeleteItem</button>
+    <div class="card container mt-4 p-3">
+        <h4>Add Item</h4>
+        <div class="card-body">
+            <label for="add-title">Title: </label>
+            <input type="text" id="add-title" />
+            <label for="add-description">Description: </label>
+            <input type="text" id="add-description" />
+            <label for="IsCompleted">IsCompleted: </label>
+            <input type="text" id="IsCompleted" />
+            <button class="btn btn-primary" type="submit" onclick="AddItem()">Add Item</button>
+        </div>
     </div>
-    <div>
-        <h2>Add Item</h2>
-        <label for="add-title">Title: </label>
-        <input type="text" id="add-title" />
-        <label for="add-description">Description: </label>
-        <input type="text" id="add-description" />
-        <label for="IsCompleted">IsCompleted: </label>
-        <input type="text" id="IsCompleted" />
-        <button type="submit" onclick="AddItem()">Add Item</button>
-    </div>
-    <div>
-        <h2>Modify Item</h2>
-        <label for="modify-title">Title: </label>
-        <input type="text" id="modify-title" />
-        <label for="modify-description">Description: </label>
-        <input type="text" id="modify-description" />
-        <label for="Modify-IsCompleted">IsCompleted: </label>
-        <input pattern="text" id="Modify-IsCompleted" />
-        <button type="submit" onclick="ModifyItem()">Modify Item</button>
+    <div class="container card mt-4 p-3">
+        <h4>Modify Item</h4>
+        <div class="card-body">
+            <label for="modify-title">Title: </label>
+            <input type="text" id="modify-title" />
+            <label for="modify-description">Description: </label>
+            <input type="text" id="modify-description" />
+            <label for="Modify-IsCompleted">IsCompleted: </label>
+            <input pattern="text" id="Modify-IsCompleted" />
+            <button class="btn btn-primary" type="submit" onclick="ModifyItem()">Modify Item</button>
+        </div>
     </div>
 
 </body>

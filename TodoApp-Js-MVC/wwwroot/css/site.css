@@ -1,3 +1,13 @@
-﻿.world {
-    color: red;
+﻿.modifyIcon::after {
+    font-family: 'Bootstrap-icons';
+    content: '\F5DE';
+}
+
+.deleteIcon::after {
+    font-family: 'Bootstrap-icons';
+    content: '\F4C8';
+}
+
+.deleteContainer {
+    display: none;
 }
