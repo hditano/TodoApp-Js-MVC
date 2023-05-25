@@ -14,19 +14,19 @@
     </div>
     <div id="items" class="container mt-4">
         <div class="border border-white row">
-            <div class="col-sm"><h5>Id</h5><div class="Id"></div></div>
-            <div class="col-sm"><h5>Title</h5><div class="Title"></div></div>
-            <div class="col-sm"><h5>Description</h5><div class="Description"></div></div>
-            <div class="col-sm"><h5>IsCompleted</h5><div class="IsCompleted"></div></div>
+            <div class="col-sm"><h5>Id</h5><div class="Ids"></div></div>
+            <div class="col-sm"><h5>Title</h5><div class="Titles"></div></div>
+            <div class="col-sm"><h5>Description</h5><div class="Descriptions"></div></div>
+            <div class="col-sm"><h5>IsCompleted</h5><div class="IsCompleteds"></div></div>
             <div class="col-sm">
                 <h5 class="text-left">Modify</h5>
-                <div class="Icons"></div>
+                <div class="rows Icons"></div>
             </div>
         </div>
         <button class="btn btn-primary" type="submit" onclick="GetItems()">GetAllItems</button>
     </div>
 
-    <div class="card container mt-4 p-3 deleteContainer" >
+    <div class="card container mt-4 p-3 deleteContainer" style="display: none;">
         <h4>Delete Item</h4>
         <div class="card-body">
             <input type="text" id="delete-items" />
@@ -45,15 +45,15 @@
             <button class="btn btn-primary" type="submit" onclick="AddItem()">Add Item</button>
         </div>
     </div>
-    <div class="container card mt-4 p-3">
+    <div class="container card mt-4 p-3 modifyContainer" style="display: none;">
         <h4>Modify Item</h4>
         <div class="card-body">
             <label for="modify-title">Title: </label>
             <input type="text" id="modify-title" />
             <label for="modify-description">Description: </label>
             <input type="text" id="modify-description" />
-            <label for="Modify-IsCompleted">IsCompleted: </label>
-            <input pattern="text" id="Modify-IsCompleted" />
+            <label for="modify-isCompleted">IsCompleted: </label>
+            <input pattern="text" id="modify-isCompleted" />
             <button class="btn btn-primary" type="submit" onclick="ModifyItem()">Modify Item</button>
         </div>
     </div>

@@ -9,5 +9,9 @@
 }
 
 .deleteContainer {
-    display: none;
+    display: block;
+}
+
+.customButton {
+    width: 60px !important;
 }

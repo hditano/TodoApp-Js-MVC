@@ -7,10 +7,10 @@ function GetItems() {
         .then(response => response.json())
         .then(data => {
 
-            const idContainer = document.querySelector('.Id');
-            const titleContainer = document.querySelector('.Title');
-            const descriptionContainer = document.querySelector('.Description');
-            const isCompletedContainer = document.querySelector('.IsCompleted');
+            const idContainer = document.querySelector('.Ids');
+            const titleContainer = document.querySelector('.Titles');
+            const descriptionContainer = document.querySelector('.Descriptions');
+            const isCompletedContainer = document.querySelector('.IsCompleteds');
             const iconsContainer = document.querySelector('.Icons');
 
             //Clear content
@@ -24,50 +24,65 @@ function GetItems() {
 
                 let myID = document.createElement('p');
                 myID.innerText = ele.todoID;
+                myID.classList.add('id');
                 idContainer.appendChild(myID);
+
                 let myTitle = document.createElement('p');
                 myTitle.innerText = ele.title;
+                myTitle.classList.add('title');
+                myTitle.setAttribute('data-id', `${ele.todoID}`);
                 titleContainer.appendChild(myTitle);
+
                 let myDescription = document.createElement('p');
                 myDescription.innerText = ele.description;
+                myDescription.classList.add('description');
+                myDescription.setAttribute('data-id', `${ele.todoID}`);
                 descriptionContainer.appendChild(myDescription);
+
                 let myIsCompleted = document.createElement('p');
                 myIsCompleted.innerText = ele.isCompleted;
+                myIsCompleted.classList.add('isCompleted');
+                myIsCompleted.setAttribute('data-id', `${ele.todoID}`);
                 isCompletedContainer.appendChild(myIsCompleted);
 
+                let myModifyLink = document.createElement('p');
+                myModifyLink.setAttribute('href', `#`);
+                myModifyLink.innerText = 'Modify';
+                myModifyLink.classList.add('col', 'btn-sm', 'btn-warning', 'customButton');
+                myModifyLink.setAttribute('data-id', `${ele.todoID}`);
+                myModifyLink.onclick = (() => OnHideShow(ele.todoID));
+                myModifyLink.style.cursor = "pointer";
+                iconsContainer.appendChild(myModifyLink);
 
+                let myDeleteLink = document.createElement('p');
+                myDeleteLink.setAttribute('href', `#`);
+                myDeleteLink.innerText = 'Delete';
+                myDeleteLink.classList.add('col', 'btn-sm', 'btn-danger', 'customButton');
+                myDeleteLink.setAttribute('data-id', `${ele.todoID}`);
+                myDeleteLink.style.cursor = "pointer";
+                iconsContainer.appendChild(myDeleteLink);
 
             })
-
-            for (let i = 0; i < data.length; i++) {
-
-                let mainDiv = document.createElement('div');
-                mainDiv.classList.add('container');
-                let modifyButton = document.createElement('p');
-                modifyButton.innerText = 'Modify'
-                modifyButton.classList.add('btn', 'btn-warning', 'btn-sm', 'mr-4');
-                modifyButton.onclick = (() => OnHideShow());
-                mainDiv.appendChild(modifyButton);
-                let trashButton = document.createElement('p');
-                trashButton.innerText = 'Delete'
-                trashButton.classList.add('btn', 'btn-danger', 'btn-sm')
-                mainDiv.appendChild(trashButton);
-                iconsContainer.appendChild(mainDiv);
-                
-            }
-
 
         })
 }
 
-function OnHideShow() {
-    const delItem = document.querySelector('.deleteContainer');
+function OnHideShow(id) {
+
+    let element = document.querySelectorAll(`[data-id="${id}"]`);
+
+
+    const delItem = document.querySelector('.modifyContainer');
 
     if (delItem.style.display === "none") {
         delItem.style.display = "block"
     } else {
         delItem.style.display = "none"
     }
+
+    document.getElementById('modify-title').value = element.innerText;
+    document.getElementById('modify-description').value = element.innerText;
+    document.getElementById('modify-isCompleted').value = element.innerText;
 }
 
 function DeleteItem() {
