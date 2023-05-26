@@ -25,6 +25,7 @@ function GetItems() {
                 let myID = document.createElement('p');
                 myID.innerText = ele.todoID;
                 myID.classList.add('id');
+                myID.setAttribute('data-id', `${ele.todoID}`);
                 idContainer.appendChild(myID);
 
                 let myTitle = document.createElement('p');
@@ -69,7 +70,9 @@ function GetItems() {
 
 function OnHideShow(id) {
 
+    // Get all data-id with ID passed by argument
     let element = document.querySelectorAll(`[data-id="${id}"]`);
+
 
 
     const delItem = document.querySelector('.modifyContainer');
@@ -80,9 +83,14 @@ function OnHideShow(id) {
         delItem.style.display = "none"
     }
 
-    document.getElementById('modify-title').value = element.innerText;
-    document.getElementById('modify-description').value = element.innerText;
-    document.getElementById('modify-isCompleted').value = element.innerText;
+    //Takes the object as an argument and returns an array.
+
+    let items = Object.values(element);
+
+    document.getElementById('modify-title').value = items[1].innerText;
+    document.getElementById('modify-description').value = items[2].innerText;
+    document.getElementById('modify-isCompleted').value = items[3].innerText;
+
 }
 
 function DeleteItem() {
