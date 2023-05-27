@@ -12,6 +12,7 @@ function GetItems() {
             const descriptionContainer = document.querySelector('.Descriptions');
             const isCompletedContainer = document.querySelector('.IsCompleteds');
             const iconsContainer = document.querySelector('.Icons');
+            const hiddenId = document.querySelector('.hidden-id');
 
             //Clear content
 
@@ -19,6 +20,7 @@ function GetItems() {
             titleContainer.innerHTML = '';
             descriptionContainer.innerHTML = '';
             isCompletedContainer.innerHTML = '';
+            hiddenId.innerHTML = '';
 
             data.forEach((ele) => {
 
@@ -63,6 +65,7 @@ function GetItems() {
                 myDeleteLink.style.cursor = "pointer";
                 iconsContainer.appendChild(myDeleteLink);
 
+
             })
 
         })
@@ -73,6 +76,11 @@ function OnHideShow(id) {
     // Get all data-id with ID passed by argument
     let element = document.querySelectorAll(`[data-id="${id}"]`);
 
+    // Get elementId and SetId linked to id argument passed by argument to OnHideShow function
+
+    let elementDataId = document.getElementById('modify-hiddenID');
+    elementDataId.setAttribute('data-id', `${id}`);
+    console.log(elementDataId.getAttribute('data-id'));
 
 
     const delItem = document.querySelector('.modifyContainer');
@@ -90,6 +98,14 @@ function OnHideShow(id) {
     document.getElementById('modify-title').value = items[1].innerText;
     document.getElementById('modify-description').value = items[2].innerText;
     document.getElementById('modify-isCompleted').value = items[3].innerText;
+
+    
+
+}
+
+function ModifyItem(id) {
+
+
 
 }
 

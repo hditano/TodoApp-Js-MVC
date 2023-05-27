@@ -23,6 +23,7 @@
                 <div class="rows Icons"></div>
             </div>
         </div>
+        <div class="hidden-id"></div>
         <button class="btn btn-primary" type="submit" onclick="GetItems()">GetAllItems</button>
     </div>
 
@@ -54,6 +55,7 @@
             <input type="text" id="modify-description" />
             <label for="modify-isCompleted">IsCompleted: </label>
             <input pattern="text" id="modify-isCompleted" />
+            <input id="modify-hiddenID" type="hidden" data-id="" />
             <button class="btn btn-primary" type="submit" onclick="ModifyItem()">Modify Item</button>
         </div>
     </div>
