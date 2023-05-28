@@ -115,10 +115,29 @@ function OnHideShow(id) {
 
 function ModifyItem(id) {
 
-    const element = document.querySelector(`#modify-title[data-id="${id}"]`);
-    const result = element.value;
+    const item = {
+        title: document.querySelector(`#modify-title[data-id="${id}"]`).value,
+        description: document.querySelector(`#modify-description[data-id="${id}"]`).value,
+        isCompleted: Boolean(document.querySelector(`#modify-isCompleted[data-id="${id}"]`).value),
+        todoID: id
+    };
 
-    console.log(result);
+    console.log(`${uri}/${id}`);
+
+    fetch(`${uri}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+    })
+        .then(() => GetItems())
+        .catch(error => console.log('Unable to update item', error));
+
+    return false;
+
+
 
 
 }
