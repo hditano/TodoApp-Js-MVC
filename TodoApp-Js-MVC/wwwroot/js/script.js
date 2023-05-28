@@ -83,12 +83,12 @@ function OnHideShow(id) {
     console.log(elementDataId.getAttribute('data-id'));
 
 
-    const delItem = document.querySelector('.modifyContainer');
+    const modifyItem = document.querySelector('.modifyContainer');
 
-    if (delItem.style.display === "none") {
-        delItem.style.display = "block"
+    if (modifyItem.style.display === "none") {
+        modifyItem.style.display = "block"
     } else {
-        delItem.style.display = "none"
+        modifyItem.style.display = "none"
     }
 
     //Takes the object as an argument and returns an array.
@@ -96,8 +96,18 @@ function OnHideShow(id) {
     let items = Object.values(element);
 
     document.getElementById('modify-title').value = items[1].innerText;
+    document.getElementById('modify-title').setAttribute('data-id', `${id}`);
     document.getElementById('modify-description').value = items[2].innerText;
+    document.getElementById('modify-description').setAttribute('data-id', `${id}`);
     document.getElementById('modify-isCompleted').value = items[3].innerText;
+    document.getElementById('modify-isCompleted').setAttribute('data-id', `${id}`);
+
+    let modifyButton = document.createElement('button');
+    modifyButton.classList.add('btn', 'btn-primary');
+    modifyButton.setAttribute('type', 'submit');
+    modifyButton.setAttribute('onclick', `ModifyItem(${id})`);
+    modifyButton.innerText = "Modify Item";
+    modifyItem.appendChild(modifyButton);
 
     
 
@@ -105,6 +115,10 @@ function OnHideShow(id) {
 
 function ModifyItem(id) {
 
+    const element = document.querySelector(`#modify-title[data-id="${id}"]`);
+    const result = element.value;
+
+    console.log(result);
 
 
 }
