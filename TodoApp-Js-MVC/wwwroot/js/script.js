@@ -165,8 +165,17 @@ function AddItem() {
     let newItem = {
         "Title": document.getElementById('add-title').value,
         "Description": document.getElementById('add-description').value,
-        "IsCompleted": document.getElementById('IsCompleted').value
+        "IsCompleted": Boolean(document.getElementById('IsCompleted').value)
     }
+
+    fetch(`${uri}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+    })
+        .catch(error => console.log('cannot add new item', error));
 
     console.log(newItem);
 
