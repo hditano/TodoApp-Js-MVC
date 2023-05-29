@@ -57,13 +57,13 @@ function GetItems() {
                 isCompletedContainer.appendChild(myIsCompleted);
 
                 let row = document.createElement('div');
-                row.classList.add('row');
+                row.classList.add('row', 'row-link');
 
                 let modifyLinkCol = document.createElement('div');
-                modifyLinkCol.classList.add('col');
+                modifyLinkCol.classList.add('col', 'modify-link');
 
                 let deleteLinkCol = document.createElement('div');
-                deleteLinkCol.classList.add('col');
+                deleteLinkCol.classList.add('col', 'delete-link');
 
 
                 let myModifyLink = document.createElement('p');
@@ -96,6 +96,12 @@ function GetItems() {
 
 function OnHideShow(id) {
 
+    if (document.querySelector('.modify-button')) {
+        document.querySelector('.modify-button').remove();
+    }
+
+
+
     // Get all data-id with ID passed by argument
     let element = document.querySelectorAll(`[data-id="${id}"]`);
 
@@ -126,7 +132,7 @@ function OnHideShow(id) {
     document.getElementById('modify-isCompleted').setAttribute('data-id', `${id}`);
 
     let modifyButton = document.createElement('button');
-    modifyButton.classList.add('btn', 'btn-primary');
+    modifyButton.classList.add('btn', 'btn-primary', 'modify-button');
     modifyButton.setAttribute('type', 'submit');
     modifyButton.setAttribute('onclick', `ModifyItem(${id})`);
     modifyButton.innerText = "Modify Item";
