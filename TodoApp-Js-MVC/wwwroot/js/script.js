@@ -13,6 +13,8 @@ function GetItems() {
             const isCompletedContainer = document.querySelector('.IsCompleteds');
             const iconsContainer = document.querySelector('.Icons');
             const hiddenId = document.querySelector('.hidden-id');
+            const modifyLink = document.querySelector('#modify-link');
+            const deleteLink = document.querySelector('#delete-link');
 
             //Clear content
 
@@ -21,6 +23,12 @@ function GetItems() {
             descriptionContainer.innerHTML = '';
             isCompletedContainer.innerHTML = '';
             hiddenId.innerHTML = '';
+
+            if (modifyLink || deleteLink) {
+                modifyLink.remove();
+                deleteLink.remove();
+            }
+
 
             data.forEach((ele) => {
 
@@ -50,6 +58,7 @@ function GetItems() {
 
                 let myModifyLink = document.createElement('p');
                 myModifyLink.setAttribute('href', `#`);
+                myModifyLink.setAttribute('id', 'modify-link');
                 myModifyLink.innerText = 'Modify';
                 myModifyLink.classList.add('col', 'btn-sm', 'btn-warning', 'customButton');
                 myModifyLink.setAttribute('data-id', `${ele.todoID}`);
@@ -58,6 +67,7 @@ function GetItems() {
                 iconsContainer.appendChild(myModifyLink);
 
                 let myDeleteLink = document.createElement('p');
+                myDeleteLink.setAttribute('id', 'delete-link');
                 myDeleteLink.setAttribute('href', `#`);
                 myDeleteLink.innerText = 'Delete';
                 myDeleteLink.classList.add('col', 'btn-sm', 'btn-danger', 'customButton');
@@ -132,7 +142,6 @@ function ModifyItem(id) {
         },
         body: JSON.stringify(item)
     })
-        .then(() => GetItems())
         .catch(error => console.log('Unable to update item', error));
 
     return false;
