@@ -12,6 +12,7 @@ TodoApp-Js-MVC is a simple todo list application built using JavaScript/ASP.NET/
 ## Technologies Used
 
 - JavaScript
+- C#
 - HTML
 - CSS
 - Bootstrap
