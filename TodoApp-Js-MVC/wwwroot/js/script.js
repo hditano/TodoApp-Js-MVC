@@ -56,25 +56,38 @@ function GetItems() {
                 myIsCompleted.setAttribute('data-id', `${ele.todoID}`);
                 isCompletedContainer.appendChild(myIsCompleted);
 
+                let row = document.createElement('div');
+                row.classList.add('row');
+
+                let modifyLinkCol = document.createElement('div');
+                modifyLinkCol.classList.add('col');
+
+                let deleteLinkCol = document.createElement('div');
+                deleteLinkCol.classList.add('col');
+
+
                 let myModifyLink = document.createElement('p');
                 myModifyLink.setAttribute('href', `#`);
                 myModifyLink.setAttribute('id', 'modify-link');
                 myModifyLink.innerText = 'Modify';
-                myModifyLink.classList.add('col', 'btn-sm', 'btn-warning', 'customButton');
+                myModifyLink.classList.add('btn-sm', 'btn-warning', 'customButton');
                 myModifyLink.setAttribute('data-id', `${ele.todoID}`);
                 myModifyLink.onclick = (() => OnHideShow(ele.todoID));
                 myModifyLink.style.cursor = "pointer";
-                iconsContainer.appendChild(myModifyLink);
 
                 let myDeleteLink = document.createElement('p');
                 myDeleteLink.setAttribute('id', 'delete-link');
                 myDeleteLink.setAttribute('href', `#`);
                 myDeleteLink.innerText = 'Delete';
-                myDeleteLink.classList.add('col', 'btn-sm', 'btn-danger', 'customButton');
+                myDeleteLink.classList.add('btn-sm', 'btn-danger', 'customButton');
                 myDeleteLink.setAttribute('data-id', `${ele.todoID}`);
                 myDeleteLink.style.cursor = "pointer";
-                iconsContainer.appendChild(myDeleteLink);
 
+                modifyLinkCol.appendChild(myModifyLink);
+                deleteLinkCol.appendChild(myDeleteLink);
+                row.appendChild(modifyLinkCol);
+                row.appendChild(deleteLinkCol);
+                iconsContainer.appendChild(row);
 
             })
 
